@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title></title>
+  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.0/dist/alpine.min.js" defer></script>
+</head>
+<body>
+
+    <div x-data="{ show: true }">
+      
+        <h1 x-show="show">Hello World</h1>
+
+        <button @click="show = ! show" x-text="show ? 'Show' : 'Hide'"></button>
+      
+    </div>
+
+</body>
+</html>
