@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title></title>
+  
+  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.0/dist/alpine.min.js" defer></script>
+  
+  <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+  rel="stylesheet">
+
+  </style>
+
+</head>
+<body class="p-10 max-w-lg mx-auto">
+
+    <form x-data="{ 
+
+        form : {
+          name: '', 
+        },
+
+        user: null,
+
+        submit(form) {  
+            fetch('https://reqres.in/api/users', {
+                method: 'POST',
+                headers: { 'Content-Type' : 'application/json' },
+                body: JSON.stringify(this.form)
+            })
+            .then(response => response.json())
+            .then(user => this.user = user)
+        }
+
+      }" @submit.prevent="submit(form)">
+
+        <label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="name">Name</label>
+        <input 
+          type="text" 
+          class="border-gray-400 border p-2 w-full" 
+          name="name" 
+          id="name" 
+          required
+          x-model="form.name"
+          >
+
+      <p x-text="name"></p>
+
+
+      <template x-if="user">
+          <div x-text=" 'The user ' + user.name + ' was created at ' + user.createdAt  "></div>
+      </template>
+
+    </form>
+
+
+
+</body>
+</html>

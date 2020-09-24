@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title></title>
+  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.0/dist/alpine.min.js" defer></script>
+
+  <style>
+    .active {
+      color: blue;
+    }
+  </style>
+
+</head>
+<body>
+
+    <div x-data="{ tab: 'first' }">
+        <button @click="tab = 'first'" :class="{ 'active' : tab === 'first' }">First</button>
+        <button @click="tab = 'second'" :class="{ 'active' : tab === 'second' }">Second</button>
+        <button @click="tab = 'third'" :class="{ 'active' : tab === 'third' }">Third</button>
+
+        <div style="border: 2px dotted grey; padding: 1rem; margin-top: 10px">
+          <div x-show="tab === 'first'">
+              First Tab
+              <p>The dsec of the frsit tab</p>
+          </div>
+
+          <div x-show="tab === 'second'">
+            Second Tab
+            <p>The dsec of the secodn tab</p>
+
+          </div>
+
+          <div x-show="tab === 'third'">
+            Third Tab
+            <p>The dsec of the third tab</p>
+
+          </div>
+      </div>
+        
+    </div>
+
+</body>
+</html>
